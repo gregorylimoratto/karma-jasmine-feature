@@ -1,0 +1,28 @@
+{
+  "name": "karma-jasmine-feature",
+  "version": "1.0.0",
+  "description": "gherkin-like javascript api for jasmine",
+  "main": "index.js",
+  "scripts": {
+    "test": "karma start"
+  },
+  "author": "Gregory Limoratto <gregorylimoratto@gmail.com> (http://blog.axawebcenter.fr/)",
+  "license": "ISC",
+  "devDependencies": {
+    "grunt": "^0.4.5",
+    "grunt-contrib-concat": "^0.5.1",
+    "grunt-contrib-jshint": "^0.11.2",
+    "grunt-contrib-uglify": "^0.9.1",
+    "grunt-contrib-watch": "^0.6.1",
+    "grunt-karma": "^0.12.0",
+    "grunt-npm": "0.0.2",
+    "jasmine-core": "^2.3.4",
+    "karma": "^0.13.7",
+    "karma-jasmine": "^0.3.6",
+    "karma-phantomjs-launcher": "~0.1.3",
+    "phantomjs": "~1.9.11"
+  },
+  "dependencies": {
+    "jasmine-core": "^2.0.0"
+  }
+}

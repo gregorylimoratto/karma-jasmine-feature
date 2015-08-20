@@ -1,0 +1,11 @@
+.*
+src
+tests
+debug
+node_modules
+.settings
+.git
+
+gruntfile.js
+karma.conf.js
+debug

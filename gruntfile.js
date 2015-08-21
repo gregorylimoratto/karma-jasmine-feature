@@ -77,8 +77,8 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-karma');
   grunt.loadNpmTasks('grunt-npm');
   
-  grunt.registerTask('debug',  ['jshint', 'concat', 'karma']); // ,
+  grunt.registerTask('debug',  ['concat', 'karma']); // ,
   
-  grunt.registerTask('default',  ['jshint', 'uglify', 'karma']); // , 
+  grunt.registerTask('default',  ['uglify', 'karma']); // , 
   grunt.registerTask('release',  ['uglify', 'npm-publish']);
 };

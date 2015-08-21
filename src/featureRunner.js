@@ -5,7 +5,6 @@
 /* global console */
 /* jshint globalstrict: true */
 'use strict';
-
 function createRunnableStep(delegate, description) {
 	return {
 		description: description,

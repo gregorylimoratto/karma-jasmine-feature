@@ -4,6 +4,7 @@
 'use strict';
 
 function Feature(description) {
+	console.log("FRITE" , description);
 	this.description = description;
 	this.scenarios = [];
 }

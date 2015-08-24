@@ -1,12 +1,19 @@
 {
   "name": "karma-jasmine-feature",
   "version": "1.0.0",
-  "description": "gherkin-like javascript api for jasmine",
+  "description": "Karma framework to write tests with gherkin for jasmine",
   "main": "lib/index.js",
+  "keywords": [
+    "gherkin", "bdd", "jasmine", "karma", "karma-plugin", "karma-adapter"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/gregorylimoratto/karma-jasmine-feature.git"
+  },
   "scripts": {
     "test": "karma start"
   },
-  "author": "Gregory Limoratto <gregorylimoratto@gmail.com> (http://blog.axawebcenter.fr/)",
+  "author": "Gregory Limoratto <gregorylimoratto@gmail.com>",
   "license": "ISC",
   "devDependencies": {
     "gherkin": "^3.1.0",

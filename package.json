@@ -2,7 +2,7 @@
   "name": "karma-jasmine-feature",
   "version": "1.0.0",
   "description": "gherkin-like javascript api for jasmine",
-  "main": "index.js",
+  "main": "lib/index.js",
   "scripts": {
     "test": "karma start"
   },

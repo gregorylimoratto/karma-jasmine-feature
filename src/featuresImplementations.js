@@ -14,7 +14,8 @@ FeaturesImplementations.prototype.addFeature = function (featureRegExp) {
 
 FeaturesImplementations.prototype.getMatchingFeatureStepsDefinition = function (feature) {
     var relevantFeatureSteps = this.featureStepsDefinitions.filter(function (featureStep) {
-        return featureStep.pattern.test(feature.description);
+        var featureText = feature.description.replace(/[\n\r]/g, " ").replace(/[ \t]+/g, ' ');
+        return featureStep.pattern.test(featureText);
     });
     var combineStep = new FeatureSteps('');
     combineStep.steps = relevantFeatureSteps.reduce(function (reduce, item) {

@@ -46,5 +46,20 @@
 			
 		});
 		
+	featureSteps('Addition : '+
+		 'In order to avoid silly mistakes ' +
+		 'As a math idiot')
+		.given('I have entered (.*) into the calculator', function(num){
+			this.numbers = this.numbers || [];
+			this.numbers.push(parseInt(num));
+		})
+		.when('I press add', function(){
+			this.result = this.numbers.reduce(function(a,b){ return a + b },0);
+		})
+		.then('the result should be (.*) on the screen', function(expectedSum){
+			expect(this.result).toBe(parseInt(expectedSum));
+		});
+		
+		
 	featureRunner().run();
 		

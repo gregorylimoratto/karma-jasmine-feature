@@ -48,7 +48,8 @@ FeatureSteps.prototype.getStep = function (step) {
     if (matchingSteps.length === 1) {
         stepExectionDelegate = function (scenarioContext) {
             try {
-                matchingSteps[0].definition.apply(scenarioContext, matchingSteps[0].arguments);
+                var argClone = (JSON.parse(JSON.stringify(matchingSteps[0].arguments))); // avoid arguments update in step definition
+                matchingSteps[0].definition.apply(scenarioContext, argClone);
             }
             catch (e) {
                 throw new Error('error while executing "' + step.description + '"\n ' + e.toString() + '\n' + e.stack);

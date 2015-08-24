@@ -63,7 +63,7 @@ StepParser.prototype.stringifyParams = function () {
 	return stepParams;
 };
 
-function featureStepStringify(keyWord, description, parameters) {
-	return new StepParser(keyWord, description, parameters).stringify();
+function featureStepStringify(keyword, description, parameters) {
+	return new StepParser(keyword, description, parameters).stringify();
 }
 	

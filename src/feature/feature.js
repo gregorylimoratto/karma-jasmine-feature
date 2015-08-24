@@ -4,9 +4,13 @@
 'use strict';
 
 function Feature(description) {
-	console.log("FRITE" , description);
 	this.description = description;
 	this.scenarios = [];
+}
+
+Feature.prototype.ignoreOther = function(){
+	this.simpleRun = true;
+	return this;
 }
 
 Feature.prototype.scenario = function (description) {

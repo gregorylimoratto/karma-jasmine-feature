@@ -1,3 +1,5 @@
+/* global fit */
+/* global fdescribe */
 /* global it */
 /* global describe */
 /* global window */
@@ -41,7 +43,12 @@ FeatureRunner.prototype.run = function () {
 FeatureRunner.prototype.runFeature = function (feature) {
 	var self = this;
 	var featureStepsDefinition = this.featuresImplementations.getMatchingFeatureStepsDefinition(feature);
-	describe('\nFeature: ' + feature.description, function () {
+	var describeFunc = describe;
+	if (feature.simpleRun){
+		describeFunc = fdescribe;
+	}
+	
+	describeFunc('\nFeature: ' + feature.description, function () {
 		feature.scenarios.forEach(function (scenario) {
 			self.runScenario(scenario, featureStepsDefinition);
 		});
@@ -60,9 +67,13 @@ FeatureRunner.prototype.runSteps = function (scenario, featureStepsDefinition) {
 	}, '');
 
 	var scenarioContext = {};
-
+	var itFunc = it;
+	if (scenario.simpleRun){
+		itFunc = fit;
+	}
+	
 	return function () {
-		it(description, function (done) {
+		itFunc(description, function (done) {
 			scenarioExecutableSteps.forEach(function (executable) {
 				executable.step(scenarioContext);
 			});

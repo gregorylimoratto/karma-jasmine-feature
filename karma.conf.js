@@ -1,9 +1,29 @@
+/* global __dirname */
 // Karma configuration
 // Generated on Thu Aug 06 2015 09:10:14 GMT+0200 (Paris, Madrid (heure d’été))
 
+var createPattern = function(path) {
+  return {pattern: path, included: true, served: true, watched: false};
+};
+
+var initFeatureRunner = function(files, preprocessors) {
+  preprocessors['**/*.feature'] = ['gherkin'];
+  files.unshift(createPattern(__dirname + '/lib/adapter.js'));
+  files.unshift(createPattern(__dirname + '/lib/feature-runner-api.js'));
+};
+initFeatureRunner.$inject = ['config.files', 'config.preprocessors'];
+
+
+
+
 module.exports = function(config) {
   config.set({
-
+    
+    plugins:['karma-*', {
+      'framework:jasmine-feature': ['factory', initFeatureRunner],
+      'preprocessor:gherkin': ['factory', require('./lib/gherkin-preprocessor')]
+    }],
+    
     // base path that will be used to resolve all patterns (eg. files, exclude)
     basePath: '',
 

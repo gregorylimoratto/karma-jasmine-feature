@@ -1,3 +1,5 @@
+
+#@ignoreOther
 Feature: Test feature
 
 	
@@ -9,7 +11,7 @@ Scenario: Tester un scenario
 	| 0 |  test|
 	| 8 | ùpkerù |
 	Then Ce paramétre "là" et "celui là"  
-	
+
 Scenario Outline: c 
     Given j'ai un param <x> <A>
     When test <A>
@@ -18,3 +20,8 @@ Scenario Outline: c
       | x  | A  |
       | dd | oo |
       | ee | bb |
+
+@ignore
+Scenario: Ignore this one
+	Given non implemented step
+	Then Inconclusive

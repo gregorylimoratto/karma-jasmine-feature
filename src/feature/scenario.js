@@ -9,6 +9,11 @@ function Scenario(description, feature) {
   this.feature = feature;
 }
 
+Scenario.prototype.ignoreOther = function(){
+	this.simpleRun = true;
+	return this;
+}
+
 Scenario.prototype.addStep = function (keyword, description, parameters) {
   this.steps.push(new Step(keyword, description, parameters));
 };

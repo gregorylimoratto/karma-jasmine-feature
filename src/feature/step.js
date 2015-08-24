@@ -9,5 +9,5 @@ function Step(keyword, description, parameters) {
 }
 
 Step.prototype.stringify = function () {
-	return new StepParser(this.keyWord, this.description, this.parameters).stringify();
+	return new StepParser(this.keyword, this.description, this.parameters).stringify();
 };

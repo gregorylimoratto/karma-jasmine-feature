@@ -16,17 +16,14 @@
 		
 	featureSteps('jasmine-cu')
 		.given('I have two persons', function(persons){
-			console.log(persons);
 			this.persons = persons;
 		})
 		.when('I remove the first one', function(){
 			this.persons.splice(0,1);
 		})
 		.then('I have just one person', function(person){
-			console.log(this.persons);
 			expect(this.persons[0]).toEqual(person);
 		});
-	featureRunner().run();
 	
 	
 	featureSteps('Test feature')
@@ -47,4 +44,7 @@
 		})
 		.then('test (.*)', function(){
 			
-		})
+		});
+		
+	featureRunner().run();
+		

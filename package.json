@@ -1,6 +1,6 @@
 {
   "name": "karma-jasmine-feature",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Karma framework to write tests with gherkin for jasmine",
   "main": "lib/index.js",
   "keywords": [

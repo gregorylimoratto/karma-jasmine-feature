@@ -49,7 +49,7 @@
 	featureSteps('Addition : '+
 		 'In order to avoid silly mistakes ' +
 		 'As a math idiot')
-		.given('I have entered (.*) into the calculator', function(num){
+		.given(/I have entered (.*) into the calculator/, function(num){
 			this.numbers = this.numbers || [];
 			this.numbers.push(parseInt(num));
 		})

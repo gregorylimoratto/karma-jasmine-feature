@@ -2,7 +2,8 @@
 'use strict';
 
 function FeatureSteps(featurePattern) {
-    this.pattern = new RegExp(featurePattern);
+    var regexp = featurePattern  instanceof RegExp ? featurePattern : new RegExp(featurePattern);
+    this.pattern = regexp;
     this.beforeSteps = [];
     this.afterSteps = [];
     this.steps = [];
@@ -21,7 +22,8 @@ FeatureSteps.prototype.after = function (delegate) {
 FeatureSteps.prototype.given =
 FeatureSteps.prototype.when =
 FeatureSteps.prototype.then = function (pattern, definition) {
-    this.steps.push({ pattern: new RegExp('^' + pattern + '$'), definition: definition });
+    var regexp = pattern  instanceof RegExp ? pattern : new RegExp('^' + pattern + '$');
+    this.steps.push({ pattern: regexp, definition: definition });
     return this;
 };
 

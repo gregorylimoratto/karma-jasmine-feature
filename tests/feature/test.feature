@@ -1,5 +1,4 @@
 
-#@ignoreOther
 Feature: Test feature
 
 	
@@ -26,4 +25,4 @@ Scenario: Ignore this one
 	Given non implemented step
 	Then Inconclusive
 	
-	
+

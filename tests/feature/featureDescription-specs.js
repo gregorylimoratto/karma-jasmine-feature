@@ -46,8 +46,8 @@
 			
 		});
 		
-	featureSteps('Addition : '+
-		 'In order to avoid silly mistakes ' +
+	featureSteps('Addition :'+
+		 'In order to avoid silly mistakes' +
 		 'As a math idiot')
 		.given(/I have entered (.*) into the calculator/, function(num){
 			this.numbers = this.numbers || [];

@@ -73,7 +73,7 @@ FeatureRunner.prototype.runSteps = function (scenario, featureStepsDefinition) {
 	}
 	
 	return function () {
-		itFunc(description, function (done) {
+		it(description, function (done) {
 			scenarioExecutableSteps.forEach(function (executable) {
 				executable.step(scenarioContext);
 			});
@@ -84,10 +84,14 @@ FeatureRunner.prototype.runSteps = function (scenario, featureStepsDefinition) {
 
 FeatureRunner.prototype.extractExecutableSteps = function (scenario, featureStepsDefinition) {
 	var beforeSteps = featureStepsDefinition.beforeSteps.map(function (definition) {
-		return createRunnableStep(definition, '');
+		return createRunnableStep(function (scenarioContext) {
+			definition.apply(scenarioContext);
+		}, '');
 	});
 	var afterSteps = featureStepsDefinition.afterSteps.map(function (definition) {
-		return createRunnableStep(definition, '');
+		return createRunnableStep(function (scenarioContext) {
+			definition.apply(scenarioContext);
+		}, '');
 	});
 	var runnableSteps = scenario.steps.map(function (step) {
 		var stepToRun = featureStepsDefinition.getStep(step);

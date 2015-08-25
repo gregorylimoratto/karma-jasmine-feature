@@ -46,10 +46,15 @@
 			
 		});
 		
-	featureSteps('Addition :'+
+	(function(){
+	featureSteps('Addition:'+
 		 'In order to avoid silly mistakes' +
 		 'As a math idiot')
+		 .before(function(mzaljkemazke){
+			 console.log(this);
+		 })
 		.given(/I have entered (.*) into the calculator/, function(num){
+			console.log(this);
 			this.numbers = this.numbers || [];
 			this.numbers.push(parseInt(num));
 		})
@@ -59,6 +64,7 @@
 		.then('the result should be (.*) on the screen', function(expectedSum){
 			expect(this.result).toBe(parseInt(expectedSum));
 		});
+	})();
 		
 		
 	featureRunner().run();

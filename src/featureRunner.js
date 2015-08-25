@@ -1,3 +1,5 @@
+/* global ddescribe */
+/* global iit */
 /* global fit */
 /* global fdescribe */
 /* global it */
@@ -18,6 +20,15 @@ function createRunnableStep(delegate, description) {
 			}
 		}
 	};
+}
+
+function getDescribeFunc(isIgnoreOthers){
+	var describeFunc = describe;
+	if (isIgnoreOthers){
+		describeFunc = fdescribe || ddescribe || describe;
+		if (describeFunc === describe) console.log("can't use ddescribe / fdescribe, please update jasmine to v2.x");
+	}
+	return describeFunc;
 }
 
 function logBeforeRun(featureRunner) {
@@ -43,12 +54,8 @@ FeatureRunner.prototype.run = function () {
 FeatureRunner.prototype.runFeature = function (feature) {
 	var self = this;
 	var featureStepsDefinition = this.featuresImplementations.getMatchingFeatureStepsDefinition(feature);
-	var describeFunc = describe;
-	if (feature.simpleRun){
-		describeFunc = fdescribe;
-	}
 	
-	describeFunc('\nFeature: ' + feature.description, function () {
+	getDescribeFunc(feature.simpleRun)('\nFeature: ' + feature.description, function () {
 		feature.scenarios.forEach(function (scenario) {
 			self.runScenario(scenario, featureStepsDefinition);
 		});
@@ -56,7 +63,7 @@ FeatureRunner.prototype.runFeature = function (feature) {
 };
 
 FeatureRunner.prototype.runScenario = function (scenario, featureStepsDefinition) {
-	describe('\n\nScenario: ' + scenario.description, this.runSteps(scenario, featureStepsDefinition));
+	getDescribeFunc(scenario.simpleRun)('\n\nScenario: ' + scenario.description, this.runSteps(scenario, featureStepsDefinition));
 };
 
 FeatureRunner.prototype.runSteps = function (scenario, featureStepsDefinition) {
@@ -67,11 +74,6 @@ FeatureRunner.prototype.runSteps = function (scenario, featureStepsDefinition) {
 	}, '');
 
 	var scenarioContext = {};
-	var itFunc = it;
-	if (scenario.simpleRun){
-		itFunc = fit;
-	}
-	
 	return function () {
 		it(description, function (done) {
 			scenarioExecutableSteps.forEach(function (executable) {

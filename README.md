@@ -54,6 +54,7 @@ The plugin will look for each features implementations within karma included fil
 
 The featureSteps() function host a set of steps that will be available for each feature that match the featureSteps regexp
 
+```javascript
 	featureSteps(/Calculator/)
 		.given(/I have entered (.*) into the calculator/, function(num){
 			// this step is for each feature that contains Calculator in title 
@@ -63,10 +64,11 @@ The featureSteps() function host a set of steps that will be available for each 
 		.when('I press add', function(){
 			// this one is not shared for "Calculator substraction"
 		});
-
+```
 
 given/when/then step can be string or regular expression that match a step in the feature file.
 
+```javascript
 	featureSteps(/Addition/)
 		.given(/I have entered (.*) into the calculator/, function(num){
 			this.numbers = this.numbers || [];
@@ -81,11 +83,13 @@ given/when/then step can be string or regular expression that match a step in th
 		.then('failed the test', function(){
 			expect(true).toBe(false);
 		});
+```
 
 Each step is executed on an isolated scope (*this*) which can hold current scenario state. (reset for each scenario)
 
 You can add test initialize and cleanup :
 
+```javascript
 	featureSteps('Addition')
 	 	.before(function () {
 			module('calculator'); // angular ng mock
@@ -99,6 +103,7 @@ You can add test initialize and cleanup :
 			...
 		})
 	...
+```
 
 To install :
 
@@ -150,6 +155,7 @@ demo.feature:
 
 demo.feature-specs.js
 
+```javascript
 	(function(){
 	'use strict';
 		featureSteps(/Roman numerals/)
@@ -169,3 +175,4 @@ demo.feature-specs.js
 				expect(this.calculator.getDisplayedValue()).toBe(num);
 			});
 	})();
+```

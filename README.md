@@ -2,6 +2,8 @@
 
 Karma plugin that use gherkin feature files to describe tests with Jasmine
 
+Any feedback is appreciated ! 
+
 
 ## Usage
 

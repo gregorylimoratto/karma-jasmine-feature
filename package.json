@@ -1,10 +1,15 @@
 {
   "name": "karma-jasmine-feature",
-  "version": "0.1.2-beta",
+  "version": "1.0.0",
   "description": "Karma framework to write tests with gherkin for jasmine",
   "main": "lib/index.js",
   "keywords": [
-    "gherkin", "bdd", "jasmine", "karma", "karma-plugin", "karma-adapter"
+    "gherkin",
+    "bdd",
+    "jasmine",
+    "karma",
+    "karma-plugin",
+    "karma-adapter"
   ],
   "repository": {
     "type": "git",
@@ -27,8 +32,8 @@
     "jasmine-core": "^2.3.4",
     "karma": "^0.13.7",
     "karma-jasmine": "^0.3.6",
-    "karma-phantomjs-launcher": "~0.1.3",
     "karma-jasmine-feature": "1.0.0",
+    "karma-phantomjs-launcher": "~0.1.3",
     "phantomjs": "~1.9.11"
   },
   "dependencies": {

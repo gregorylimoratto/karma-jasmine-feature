@@ -44,10 +44,10 @@ Each Gherkin ***Feature*** will become a jasmine ***describe***
 
 And each ***Scenario*** will become a ***it***
 
-Some tags will allow you to ignore feature execution : jasmine fdescribe() / fit()
+Some tags will allow you to ignore feature execution : jasmine xdescribe() / xit()
 
 - @ignore - ignore Feature or Scenario
-- @ignoreOther - ignore all other feature / scenario exept those with this tag
+- @ignoreOthers - ignore all other feature / scenario exept those with this tag
 
 ### Javascript Specs
 
@@ -111,7 +111,7 @@ To install :
 
 	npm install karma-jasmine-feature --save-dev
 
-Then, reference framework in karma.conf.js
+Then, reference framework in karma.conf.js (require jasmine framework)
 
 	frameworks: ['jasmine', 'jasmine-feature'],
 
@@ -154,6 +154,12 @@ demo.feature:
 		And I enter 'III' in the calculator
 		When I press add
 		Then the displayed value is 'XII'
+	
+	@ignore
+	Scenario: Should be ignore
+		Given A scenario with no js implementation
+		When I include this scenario
+		Then Nothing happens
 
 demo.feature-specs.js
 
@@ -178,3 +184,14 @@ demo.feature-specs.js
 			});
 	})();
 ```
+
+----
+#### Release Note
+
+- 26/08/2015 : First release
+	- Karma preprocessor to transform feature file into javascript file
+	- Karma framework to execute features
+	- exlude tests with @ignore & @ignoreOthers
+	- custom api : 
+		- map feature file "Feature" with featureStep(/* regexp that match Feature title + description */)
+		- map steps with given / when / then (/* regexp to catch parameters */)

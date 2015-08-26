@@ -9,8 +9,13 @@ function Scenario(description, feature) {
   this.feature = feature;
 }
 
-Scenario.prototype.ignoreOther = function(){
-	this.simpleRun = true;
+Scenario.prototype.ignoreOthers = function(){
+	this.excludeOthers = true;
+	return this;
+}
+
+Scenario.prototype.ignore = function(){
+	this.isIgnored = true;
 	return this;
 }
 

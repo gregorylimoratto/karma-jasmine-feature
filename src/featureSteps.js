@@ -2,7 +2,7 @@
 'use strict';
 
 function FeatureSteps(featurePattern) {
-    var regexp = featurePattern  instanceof RegExp ? featurePattern : new RegExp(featurePattern);
+    var regexp = featurePattern instanceof RegExp ? featurePattern : new RegExp(featurePattern.replace(/[\ \t]*[\n\r]+[\ \t]*/g, ""));
     this.pattern = regexp;
     this.beforeSteps = [];
     this.afterSteps = [];
@@ -22,7 +22,7 @@ FeatureSteps.prototype.after = function (delegate) {
 FeatureSteps.prototype.given =
 FeatureSteps.prototype.when =
 FeatureSteps.prototype.then = function (pattern, definition) {
-    var regexp = pattern  instanceof RegExp ? pattern : new RegExp('^' + pattern + '$');
+    var regexp = pattern  instanceof RegExp ? pattern : new RegExp('^' + pattern.replace(/[\ \t]*[\n\r]+[\ \t]*/g, "") + '$');
     this.steps.push({ pattern: regexp, definition: definition });
     return this;
 };

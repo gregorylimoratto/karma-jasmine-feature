@@ -16,19 +16,10 @@ function createRunnableStep(delegate, description) {
 			if (delegate) {
 				delegate(scenarioContext);
 			} else {
-				throw description + "\nStep not found exception";
+				throw new Error(description + "\nStep not found exception");
 			}
 		}
 	};
-}
-
-function getDescribeFunc(isIgnoreOthers){
-	var describeFunc = describe;
-	if (isIgnoreOthers){
-		describeFunc = fdescribe || ddescribe || describe;
-		if (describeFunc === describe) console.log("can't use ddescribe / fdescribe, please update jasmine to v2.x");
-	}
-	return describeFunc;
 }
 
 function logBeforeRun(featureRunner) {
@@ -55,7 +46,7 @@ FeatureRunner.prototype.runFeature = function (feature) {
 	var self = this;
 	var featureStepsDefinition = this.featuresImplementations.getMatchingFeatureStepsDefinition(feature);
 	
-	getDescribeFunc(feature.simpleRun)('\nFeature: ' + feature.description, function () {
+	describe('\nFeature: ' + feature.description, function () {
 		feature.scenarios.forEach(function (scenario) {
 			self.runScenario(scenario, featureStepsDefinition);
 		});
@@ -63,7 +54,16 @@ FeatureRunner.prototype.runFeature = function (feature) {
 };
 
 FeatureRunner.prototype.runScenario = function (scenario, featureStepsDefinition) {
-	getDescribeFunc(scenario.simpleRun)('\n\nScenario: ' + scenario.description, this.runSteps(scenario, featureStepsDefinition));
+	var ignoreScenario = scenario.isIgnored;
+	if (!ignoreScenario && !scenario.excludeOthers){
+		ignoreScenario = this.features.some(function(feature){
+			return feature.scenarios.some(function(scenar){
+				return scenar.excludeOthers;
+			})
+		});
+	}
+	var describe = ignoreScenario ? window.xdescribe : window.describe;
+	describe('\n\nScenario: ' + scenario.description, this.runSteps(scenario, featureStepsDefinition));
 };
 
 FeatureRunner.prototype.runSteps = function (scenario, featureStepsDefinition) {

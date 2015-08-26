@@ -16,10 +16,15 @@
 		.then(/the displayed value is '(.*)'/, function(num){
 		//	expect(this.calculator.getDisplayedValue()).toBe(num);
 		});
+		
+	featureSteps('')
+		.given(/A scenario with no js implementation/,function(){ throw new Error("Should not be called"); })
+		.when(/I include this scenario/,function(){ throw new Error("Should not be called"); })
+		.then(/Nothing happens/,function(){ throw new Error("Should not be called"); })
 })();
 
 
-function Calculator(){
+function Calculator(){ 
 	this.inputs = [];
 }
 

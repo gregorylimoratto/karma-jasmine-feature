@@ -27,3 +27,12 @@
 		Given A scenario with no js implementation
 		When I include this scenario
 		Then Nothing happens
+		
+	Scenario Outline: Should allow ' in scenario
+		Given I add a quote ' in step
+		When I run the scenario with <I'm a param>
+		Then the first Example is "TEST"
+		
+	Examples:
+		| I'm a param |
+		| TEST		  |

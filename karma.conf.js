@@ -8,8 +8,8 @@ var createPattern = function(path) {
 
 var initFeatureRunner = function(files, preprocessors) {
   preprocessors['**/*.feature'] = ['gherkin'];
-  files.unshift(createPattern(__dirname + '/lib/adapter.js'));
-  files.unshift(createPattern(__dirname + '/lib/feature-runner-api.js'));
+  files.unshift(createPattern(require.resolve('./lib/adapter.js')));
+  files.unshift(createPattern(require.resolve('gherkin-specs-api')));
 };
 initFeatureRunner.$inject = ['config.files', 'config.preprocessors'];
 

@@ -25,11 +25,30 @@
 		.then('the first Example is "(.*)"',function(test){ 
 			expect(this.param).toBe(test); 
 		});
+	featureSteps(/Roman numerals/)
+		.given(/I use Q/, function(){ 
+			this.promise = Q; 
+		})
+		.when(/I have a promise setting '(.*)' in context after (\d+) ms/, function(message, ms){ 
+			var defer = this.promise.defer();
+			var self = this;
+			setTimeout(function(){
+				if (message === "fail"){
+					//defer.reject({errorMessage: message});
+					
+					self.message = message;
+					defer.resolve();
+				} else {
+					self.message = message;
+					defer.resolve();
+				}
+			}, ms);
+			return defer.promise;
+		})
+		.then(/I have '(.*)' in context/,function(message){
+			expect(this.message).toBe(message); 
+		});
 		
-	featureSteps('')
-		.given(/A scenario with no js implementation/,function(){ throw new Error("Should not be called"); })
-		.when(/I include this scenario/,function(){ throw new Error("Should not be called"); })
-		.then(/Nothing happens/,function(){ throw new Error("Should not be called"); })
 })();
 
 

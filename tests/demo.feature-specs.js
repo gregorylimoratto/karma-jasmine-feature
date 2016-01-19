@@ -16,7 +16,15 @@
 		.then(/the displayed value is '(.*)'/, function(num){
 		//	expect(this.calculator.getDisplayedValue()).toBe(num);
 		});
-		
+	
+    featureSteps(/Roman numerals/)
+		.given(/a blog post named "(.*)" with Markdown body/, function(param1, docString){
+            expect(docString).toBe("Some Title, Eh?\n"+
+"===============\n"+
+"Here is the first paragraph of my blog post. Lorem ipsum dolor sit amet,\n"+
+"consectetur adipiscing elit.");
+		})
+    	
 	featureSteps(/Roman numerals/)
 		.given("I add a quote ' in step",function(){})
 		.when("I run the scenario with (.*)",function(param){ 

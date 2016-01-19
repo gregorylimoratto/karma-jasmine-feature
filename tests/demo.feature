@@ -21,6 +21,16 @@
 		And I enter 'III' in the calculator
 		When I press add
 		Then the displayed value is 'XII'
+        
+     Scenario: DocString Sample 
+    
+    Given a blog post named "Random" with Markdown body
+  """
+  Some Title, Eh?
+  ===============
+  Here is the first paragraph of my blog post. Lorem ipsum dolor sit amet,
+  consectetur adipiscing elit.
+  """
 	
 	@ignore
 	Scenario: Should be ignore
@@ -47,5 +57,4 @@
 		Given I use Q
 		When I have a promise setting 'fail' in context after 250 ms
 		Then I have 'fail' in context
-		
 	

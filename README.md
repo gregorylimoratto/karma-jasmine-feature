@@ -188,6 +188,8 @@ demo.feature-specs.js
 ----
 #### Release Note
 
+- 20/01/2016 : Add support for async code
+               Add support for gherkin's docString
 - 26/08/2015 : First release
 	- Karma preprocessor to transform feature file into javascript file
 	- Karma framework to execute features

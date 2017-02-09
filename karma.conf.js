@@ -35,7 +35,6 @@ module.exports = function(config) {
 
     // list of files / patterns to load in the browser
     files: [
-      'src/**/*.js',
       'tests/**/*.js',
       'tests/**/*.feature'
     ],
@@ -43,6 +42,8 @@ module.exports = function(config) {
 
     // list of files to exclude
     exclude: [
+      'tests/**/*.ignore-others.feature',
+      'tests/**/*.only.feature'
     ],
 
 

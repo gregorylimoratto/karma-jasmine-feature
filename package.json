@@ -1,6 +1,6 @@
 {
   "name": "karma-jasmine-feature",
-  "version": "1.1.3",
+  "version": "1.1.4",
   "description": "Karma framework to write tests with gherkin for jasmine",
   "main": "lib/index.js",
   "keywords": [
@@ -16,7 +16,10 @@
     "url": "git://github.com/gregorylimoratto/karma-jasmine-feature.git"
   },
   "scripts": {
-    "test": "karma start"
+    "test": "npm run testStandard && npm run testIgnoreOthers && npm run testOnly",
+    "testStandard": "./node_modules/.bin/karma start karma.conf.js --single-run",
+    "testIgnoreOthers": "./node_modules/.bin/karma start karma.conf.ignore-others.js --single-run",
+    "testOnly": "./node_modules/.bin/karma start karma.conf.only.js --single-run"
   },
   "author": {
     "name": "Gregory Limoratto",
